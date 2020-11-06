@@ -8,7 +8,7 @@
 }
 ---
 {{#*inline "escapeName"}}
-{{~escapeJson (escapeString . "||" "|")}}
+{{~(escapeString . "||" "|")}}
 {{~/inline}}
 {{#*inline "player"}}
 {{~#if person.alias}}{{> escapeName person.alias}}{{else}}{{> escapeName person.handle}}{{/if}}
@@ -24,8 +24,8 @@
   {{/with}}
   "player1": "{{> player state.players.[0]}}",
   "player2": "{{> player state.players.[1]}}",
-  "score1": "{{escapeJson state.players.[0].score}}",
-  "score2": "{{escapeJson state.players.[1].score}}",
-  "match": "{{escapeJson state.match.name}}",
-  "game": "{{escapeJson state.tournament}}"
+  "score1": "{{state.players.[0].score}}",
+  "score2": "{{state.players.[1].score}}",
+  "match": "{{state.match.name}}",
+  "game": "{{state.tournament}}"
 }

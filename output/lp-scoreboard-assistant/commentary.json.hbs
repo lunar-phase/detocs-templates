@@ -1,5 +1,5 @@
 {{#*inline "escapeName"}}
-{{~escapeJson (escapeString . "||" "|")}}
+{{~(escapeString . "||" "|")}}
 {{~/inline}}
 {{#*inline "player"}}
 {{~> escapeName person.handle}}
@@ -12,6 +12,6 @@
   "player2": "{{> player state.commentators.[1]}}",
   "score1": "0",
   "score2": "0",
-  "match": "{{escapeJson state.tournament}}",
-  "game": "{{#if state.event}}{{escapeJson state.event}}{{else}}{{escapeJson state.game.name}}{{/if}}"
+  "match": "{{state.tournament}}",
+  "game": "{{#if state.event}}{{state.event}}{{else}}{{state.game.name}}{{/if}}"
 }
