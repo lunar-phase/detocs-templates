@@ -1,5 +1,5 @@
 {{#*inline "escapeName"}}
-{{~(escapeString . "||" "|")}}
+{{~escapeRegex . "\|+" "|"}}
 {{~/inline}}
 {{#*inline "player"}}
 {{~> escapeName person.handle}}
