@@ -1,0 +1,37 @@
+---
+{
+  "setLengths": {
+    "tf": "First to 3",
+    "gf": "First to 3",
+    "wf": "First to 3",
+    "lf": "First to 3",
+    "cas": "Casuals",
+    "": ""
+  }
+}
+---
+{
+    "cTitle1": "{{state.commentators.[0].prefixedName}}",
+    "cTitle2": "{{state.commentators.[1].prefixedName}}",
+    "mText1": "{{state.messages.[0]}}",
+    "mText2": "{{state.messages.[1]}}",
+    "mText3": "{{state.messages.[2]}}",
+    "mText4": "{{state.messages.[3]}}",
+    "p1Name": "{{state.players.[0].nameAndStatus}}",
+    "p1Score": "{{state.players.[0].score}}",
+    "p1Team": "{{state.players.[0].person.prefix}}",
+    "p2Name": "{{state.players.[1].nameAndStatus}}",
+    "p2Score": "{{state.players.[1].score}}",
+    "p2Team": "{{state.players.[1].person.prefix}}",
+    "round": "{{state.match.name}}",
+    {{#if state.match.id}}
+        {{#with (lookup userData.setLengths state.match.id) as | mapping |}}
+    "set": "{{mapping}}",
+        {{else}}
+    "set": "First to 2",
+        {{/with}}
+    {{else}}
+    "set": "",
+    {{/if}}
+    "timestamp": "{{timestamp}}"
+}
