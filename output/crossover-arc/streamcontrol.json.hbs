@@ -1,0 +1,80 @@
+---
+{
+  "gameIds": {
+    "gbvs": "GBVS",
+    "ggst": "GGST",
+    "melty": "MBAACC",
+    "mbtl": "MBTL",
+    "uni": "UNICLR",
+    "dfci": "DFCI",
+    "kofxv": "KOFXV"
+  }
+}
+---
+{
+    "code": "",
+    "com1Name": "",
+    "com1Twitter": "",
+    "com2Name": "",
+    "com2Twitter": "",
+    "gFinals1": "Crocs N' Socks",
+    "gFinals1Score": "",
+    "gFinals2": "Moku",
+    "gFinals2Score": "",
+    {{#if state.game.id}}
+        {{#with (lookup userData.gameIds state.game.id) as | mapping |}}
+    "game": "{{mapping}}",
+        {{else}}
+    "game": "DFCI",
+        {{/with}}
+    {{else}}
+    "game": "DFCI",
+    {{/if}}
+    "lFinals1": "Lord Byron",
+    "lFinals1Score": "1",
+    "lFinals2": "moku",
+    "lFinals2Score": "3",
+    "lSemis1": "Bane?",
+    "lSemis1Score": "0",
+    "lSemis2": "moku",
+    "lSemis2Score": "2",
+    "leBottom1": "swiggn",
+    "leBottom1Score": "0",
+    "leBottom2": "Pandabetic",
+    "leBottom2Score": "2",
+    "leTop1": "Give",
+    "leTop1Score": "",
+    "leTop2": "Bane?",
+    "leTop2Score": "",
+    "lqBottom1": "Moku",
+    "lqBottom1Score": "2",
+    "lqBottom2": "Pandabetic",
+    "lqBottom2Score": "0",
+    "lqTop1": "Reicy",
+    "lqTop1Score": "0",
+    "lqTop2": "Bane?",
+    "lqTop2Score": "2",
+    "matcherino": "https://matcherino.com/tournaments/68228",
+    "p1Name": "{{state.players.[0].nameAndStatus}}",
+    "p1Score": "{{state.players.[0].score}}",
+    "p1Team": "{{state.players.[0].person.prefix}}",
+    "p2Name": "{{state.players.[1].nameAndStatus}}",
+    "p2Score": "{{state.players.[1].score}}",
+    "p2Team": "{{state.players.[1].person.prefix}}",
+    "round": "{{state.match.name}}",
+    "savebutton": "0",
+    "timestamp": "{{timestamp}}",
+    "wFinals1": "Crocs N' Socks",
+    "wFinals1Score": "3",
+    "wFinals2": "Lord Byron",
+    "wFinals2Score": "1",
+    "wsBottom1": "Lord Byron",
+    "wsBottom1Score": "2",
+    "wsBottom2": "Reicy",
+    "wsBottom2Score": "1",
+    "wsTop1": "Crocs N' Socks",
+    "wsTop1Score": "2",
+    "wsTop2": "Moku",
+    "wsTop2Score": "1"
+}
+
