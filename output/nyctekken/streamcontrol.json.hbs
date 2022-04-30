@@ -14,8 +14,10 @@
 }
 ---
 {
-    "cTitle1": "{{state.commentators.[0].prefixedName}}",
-    "cTitle2": "{{state.commentators.[1].prefixedName}}",
+    "cTitle1": "{{state.commentators.[0].person.handle}}",
+    "cTeam1": "{{state.commentators.[0].person.prefix}}",
+    "cTitle2": "{{state.commentators.[1].person.handle}}",
+    "cTeam2": "{{state.commentators.[1].person.prefix}}",
     "mText1": "{{state.messages.[0]}}",
     "mText2": "{{state.messages.[1]}}",
     "mText3": "{{state.messages.[2]}}",
