@@ -3,6 +3,7 @@
   "gameIds": {
     "gbvs": "GBVS",
     "ggst": "GGST",
+    "ggxrd": "GGXRD",
     "melty": "MBAACC",
     "mbtl": "MBTL",
     "uni": "UNICLR",
@@ -11,27 +12,33 @@
   }
 }
 ---
+{{#*inline "player"}}
+{{~#if person.alias}}{{person.alias}}{{else}}{{person.handle}}{{/if}}
+{{~#if comment}} ({{comment}}){{/if}}
+{{~/inline}}
 {
-    "p1Name": "{{state.players.[0].nameAndStatus}}",
-    "p1Team": "{{state.players.[0].person.prefix}}",
-    "p1Score": "{{state.players.[0].score}}",
-    "p2Name": "{{state.players.[1].nameAndStatus}}",
-    "p2Team": "{{state.players.[1].person.prefix}}",
-    "p2Score": "{{state.players.[1].score}}",
-    "round": "{{state.match.name}}",
-    {{#if state.game.id}}
-        {{#with (lookup userData.gameIds state.game.id) as | mapping |}}
-    "game": "{{mapping}}",
-        {{else}}
-    "game": "MBAACC",
-        {{/with}}
+  "p1Name": "{{> player state.players.[0]}}",
+  "p1Team": "{{state.players.[0].person.prefix}}",
+  "p1Score": "{{state.players.[0].score}}",
+  "p1Loss": {{#if state.players.[0].inLosers}}true{{else}}false{{/if}},
+  "p2Name": "{{> player state.players.[1]}}",
+  "p2Team": "{{state.players.[1].person.prefix}}",
+  "p2Score": "{{state.players.[1].score}}",
+  "p2Loss": {{#if state.players.[1].inLosers}}true{{else}}false{{/if}},
+  "round": "{{state.match.name}}",
+  {{#if state.game.id}}
+    {{#with (lookup userData.gameIds state.game.id) as | mapping |}}
+  "game": "{{mapping}}",
     {{else}}
-    "game": "MBAACC",
-    {{/if}}
-    "offline": true,
-    "com1Name": "{{state.commentators.[0].prefixedName}}",
-    "com1Twitter": "{{state.commentators.[0].person.twitter}}",
-    "com2Name": "{{state.commentators.[1].prefixedName}}",
-    "com2Twitter": "{{state.commentators.[1].person.twitter}}"
+  "game": "MBAACC",
+    {{/with}}
+  {{else}}
+  "game": "MBAACC",
+  {{/if}}
+  "offline": true,
+  "com1Name": "{{state.commentators.[0].prefixedName}}",
+  "com1Twitter": "{{#if state.commentators.[0].person.twitter}}@{{state.commentators.[0].person.twitter}}{{/if}}",
+  "com2Name": "{{state.commentators.[1].prefixedName}}",
+  "com2Twitter": "{{#if state.commentators.[1].person.twitter}}@{{state.commentators.[1].person.twitter}}{{/if}}"
 }
 
