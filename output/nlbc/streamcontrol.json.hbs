@@ -1,0 +1,14 @@
+{
+    "com1": "{{state.commentators.[0].prefixedName}}",
+    "com2": "{{state.commentators.[1].prefixedName}}",
+    "game": "{{state.match.name}}",
+    "pName1": "{{state.players.[0].nameAndStatus}}",
+    "pName2": "{{state.players.[1].nameAndStatus}}",
+    "pScore1": "{{state.players.[0].score}}",
+    "pScore2": "{{state.players.[1].score}}",
+    "pTeam1": "{{state.players.[0].person.prefix}}",
+    "pTeam2": "{{state.players.[1].person.prefix}}",
+    "timestamp": "{{timestamp}}",
+    "twit1": "{{#if state.commentators.[0].person.twitter}}@{{state.commentators.[0].person.twitter}}{{/if}}",
+    "twit2": "{{#if state.commentators.[1].person.twitter}}@{{state.commentators.[1].person.twitter}}{{/if}}"
+}
