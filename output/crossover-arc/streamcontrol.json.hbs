@@ -1,17 +1,19 @@
 ---
 {
   "gameIds": {
+    "dfci": "DFCI",
+    "dnf": "DNF",
     "gbvs": "GBVS",
     "gbvsr": "GBVSR",
     "ggst": "GGST",
     "ggxrd": "GGXRD",
     "ggxx": "GGACPR",
-    "melty": "MBAACC",
+    "kofxv": "KOFXV",
     "mbtl": "MBTL",
+    "melty": "MBAACC",
+    "sf6": "SF6",
     "uni": "UNICLR",
-    "uni2": "UNISC",
-    "dfci": "DFCI",
-    "kofxv": "KOFXV"
+    "uni2": "UNISC"
   }
 }
 ---
@@ -33,10 +35,10 @@
     {{#with (lookup userData.gameIds state.game.id) as | mapping |}}
   "game": "{{mapping}}",
     {{else}}
-  "game": "MBAACC",
+  "game": "MBTL",
     {{/with}}
   {{else}}
-  "game": "MBAACC",
+  "game": "MBTL",
   {{/if}}
   "offline": true,
   "com1Name": "{{state.commentators.[0].prefixedName}}",
