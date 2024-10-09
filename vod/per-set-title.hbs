@@ -1,0 +1,7 @@
+{{#*inline "characterList"}}
+{{~#if characters}} ({{#each characters}}{{#unless @first}}, {{/unless}}{{this.name}}{{/each}}){{/if~}}
+{{/inline}}
+{{tournament.shortName}}: {{set.players.[0].name}}{{> characterList set.players.[0]}} vs {{set.players.[1].name}}{{> characterList set.players.[1]}} -
+{{~#if videogame.shortName}} {{videogame.shortName}}{{/if~}}
+{{~#if phase.name}} {{phase.name}}{{/if~}}
+{{~#if set.fullRoundText}} {{set.fullRoundText}}{{/if~}}
