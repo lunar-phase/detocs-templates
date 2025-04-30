@@ -1,0 +1,94 @@
+---
+{
+  "tabNameMappings": {
+  },
+  "setLengths": {
+    "ffcotw": {
+      "default": 3,
+      "exceptions": {
+        "wf": 5,
+        "ls": 5,
+        "lf": 5,
+        "gf": 5,
+        "tf": 5
+      }
+    },
+    "sf3_3s": {
+      "default": 3,
+      "exceptions": {
+        "wf": 5,
+        "ls": 5,
+        "lf": 5,
+        "gf": 5,
+        "tf": 5
+      }
+    },
+    "t8": {
+      "default": 3,
+      "exceptions": {
+        "wf": 5,
+        "ls": 5,
+        "lf": 5,
+        "gf": 5,
+        "tf": 5
+      }
+    },
+    "sf6": {
+      "default": 2,
+      "exceptions": {
+      }
+    }
+  }
+}
+---
+{{#*inline "player"}}
+{{~#if person.alias}}{{person.alias}}{{else}}{{person.handle}}{{/if}}
+{{~#if comment}} ({{comment}}){{/if}}
+{{~#if inLosers}} [L]{{/if}}
+{{~/inline}}
+{
+  "lp_tourney_name": { "old_value": "{{state.tournament}}", "new_value": "{{state.tournament}}" },
+  "lp_round": { "old_value": "{{state.match.name}}", "new_value": "{{state.match.name}}" },
+
+  {{#with (lookup userData.setLengths state.game.id) as | rules |}}
+  {{#with (lookup rules.exceptions ../state.match.id) as | length |}}
+  "lp_best_of": { "old_value": "{{length}}", "new_value": "{{length}}" },
+  {{else}}
+  "lp_best_of": { "old_value": "{{rules.default}}", "new_value": "{{rules.default}}" },
+  {{/with}}
+  {{else}}
+  "lp_best_of": { "old_value": "4", "new_value": "4" },
+  {{/with}}
+
+  {{#if state.game.name}}
+  {{#with (lookup userData.tabNameMappings state.game.id) as | mapping |}}
+  "lp_game": { "old_value": "{{mapping}}", "new_value": "{{mapping}}" },
+  {{else}}
+  "lp_game": { "old_value": "{{state.game.name}}", "new_value": "{{state.game.name}}" },
+  {{/with}}
+  {{/if}}
+
+  "lp_player1_name": { "old_value": "{{> player state.players.[0]}}", "new_value": "{{> player state.players.[0]}}" },
+  "lp_player1_twitter": { "old_value": "{{state.players.[0].twitter}}", "new_value": "{{state.players.[0].twitter}}" },
+  "lp_player1_pronoun": { "old_value": "{{state.players.[0].pronouns}}", "new_value": "{{state.players.[0].pronouns}}" },
+  "lp_player1_sponsor": { "old_value": "{{state.players.[0].prefix}}", "new_value": "{{state.players.[0].prefix}}" },
+  "lp_player1_score": { "old_value": "{{state.players.[0].score}}", "new_value": "{{state.players.[0].score}}" },
+
+  "lp_player2_name": { "old_value": "{{> player state.players.[1]}}", "new_value": "{{> player state.players.[1]}}" },
+  "lp_player2_twitter": { "old_value": "{{state.players.[1].twitter}}", "new_value": "{{state.players.[1].twitter}}" },
+  "lp_player2_pronoun": { "old_value": "{{state.players.[1].pronouns}}", "new_value": "{{state.players.[1].pronouns}}" },
+  "lp_player2_sponsor": { "old_value": "{{state.players.[1].prefix}}", "new_value": "{{state.players.[1].prefix}}" },
+  "lp_player2_score": { "old_value": "{{state.players.[1].score}}", "new_value": "{{state.players.[1].score}}" },
+
+  "lp_commentator1_name": { "old_value": "{{state.commentators.[0].prefixedName}}", "new_value": "{{state.commentators.[0].prefixedName}}" },
+  "lp_commentator1_twitter": { "old_value": "{{state.commentators.[0].twitter}}", "new_value": "{{state.commentators.[0].twitter}}" },
+  "lp_commentator1_pronoun": { "old_value": "{{state.commentators.[0].pronouns}}", "new_value": "{{state.commentators.[0].pronouns}}" },
+
+  "lp_commentator2_name": { "old_value": "{{state.commentators.[1].prefixedName}}", "new_value": "{{state.commentators.[1].prefixedName}}" },
+  "lp_commentator2_twitter": { "old_value": "{{state.commentators.[1].twitter}}", "new_value": "{{state.commentators.[1].twitter}}" },
+  "lp_commentator2_pronoun": { "old_value": "{{state.commentators.[1].pronouns}}", "new_value": "{{state.commentators.[1].pronouns}}" },
+
+  "lp_Lower_3rd1": { "old_value": "{{state.messages.[0]}}", "new_value": "{{state.messages.[0]}}" },
+  "lp_Lower_3rd2": { "old_value": "{{state.messages.[1]}}", "new_value": "{{state.messages.[1]}}" },
+  "lp_timer": { "old_value": "{{state.messages.[2]}}", "new_value": "{{state.messages.[2]}}" }
+}
