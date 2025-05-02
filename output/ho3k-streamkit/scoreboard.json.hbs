@@ -41,11 +41,6 @@
   }
 }
 ---
-{{#*inline "player"}}
-{{~#if person.alias}}{{person.alias}}{{else}}{{person.handle}}{{/if}}
-{{~#if comment}} ({{comment}}){{/if}}
-{{~#if inLosers}} [L]{{/if}}
-{{~/inline}}
 {
   "setup": "lp_fields",
   "group": "panel-writer",
@@ -71,28 +66,26 @@
     {{/with}}
     {{/if}}
 
-    "lp_player1_name": { "new_value": "{{> player state.players.[0]}}" },
-    "lp_player1_twitter": { "new_value": "{{state.players.[0].twitter}}" },
-    "lp_player1_pronoun": { "new_value": "{{state.players.[0].pronouns}}" },
-    "lp_player1_sponsor": { "new_value": "{{state.players.[0].prefix}}" },
+    "lp_player1_name": { "new_value": "{{state.players.[0].prefixedNameAndStatus}}" },
+    "lp_player1_twitter": { "new_value": "{{state.players.[0].person.twitter}}" },
+    "lp_player1_pronoun": { "new_value": "{{state.players.[0].person.pronouns}}" },
     "lp_player1_score": { "new_value": "{{state.players.[0].score}}" },
 
-    "lp_player2_name": { "new_value": "{{> player state.players.[1]}}" },
-    "lp_player2_twitter": { "new_value": "{{state.players.[1].twitter}}" },
-    "lp_player2_pronoun": { "new_value": "{{state.players.[1].pronouns}}" },
-    "lp_player2_sponsor": { "new_value": "{{state.players.[1].prefix}}" },
+    "lp_player2_name": { "new_value": "{{state.players.[1].prefixedNameAndStatus}}" },
+    "lp_player2_twitter": { "new_value": "{{state.players.[1].person.twitter}}" },
+    "lp_player2_pronoun": { "new_value": "{{state.players.[1].person.pronouns}}" },
     "lp_player2_score": { "new_value": "{{state.players.[1].score}}" },
 
     "lp_commentator1_name": { "new_value": "{{state.commentators.[0].prefixedName}}" },
-    "lp_commentator1_twitter": { "new_value": "{{state.commentators.[0].twitter}}" },
-    "lp_commentator1_pronoun": { "new_value": "{{state.commentators.[0].pronouns}}" },
+    "lp_commentator1_twitter": { "new_value": "{{state.commentators.[0].person.twitter}}" },
+    "lp_commentator1_pronoun": { "new_value": "{{state.commentators.[0].person.pronouns}}" },
 
     "lp_commentator2_name": { "new_value": "{{state.commentators.[1].prefixedName}}" },
-    "lp_commentator2_twitter": { "new_value": "{{state.commentators.[1].twitter}}" },
-    "lp_commentator2_pronoun": { "new_value": "{{state.commentators.[1].pronouns}}" },
+    "lp_commentator2_twitter": { "new_value": "{{state.commentators.[1].person.twitter}}" },
+    "lp_commentator2_pronoun": { "new_value": "{{state.commentators.[1].person.pronouns}}" },
 
     "lp_Lower_3rd1": { "new_value": "{{state.messages.[0]}}" },
     "lp_Lower_3rd2": { "new_value": "{{state.messages.[1]}}" },
-    "lp_timer": { "new_value": "{{state.messages.[2]}}" }
+    "lp_timer": { "new_value": "{{state.messages.[3]}}" }
   }
 }
