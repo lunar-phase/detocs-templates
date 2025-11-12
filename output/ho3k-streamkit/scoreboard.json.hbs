@@ -1,40 +1,16 @@
 ---
 {
   "tabNameMappings": {
+    "_ssbu": "Super Smash Bros. Ultimate Doubles"
   },
   "setLengths": {
-    "ffcotw": {
-      "default": 3,
+    "ssbu": {
+      "default": 5,
       "exceptions": {
-        "wf": 5,
-        "ls": 5,
-        "lf": 5,
-        "gf": 5,
-        "tf": 5
-      }
-    },
-    "sf3_3s": {
-      "default": 3,
-      "exceptions": {
-        "wf": 5,
-        "ls": 5,
-        "lf": 5,
-        "gf": 5,
-        "tf": 5
-      }
-    },
-    "t8": {
-      "default": 3,
-      "exceptions": {
-        "wf": 5,
-        "ls": 5,
-        "lf": 5,
-        "gf": 5,
-        "tf": 5
       }
     },
     "sf6": {
-      "default": 2,
+      "default": 5,
       "exceptions": {
       }
     }
@@ -46,16 +22,16 @@
   "group": "panel-writer",
   "message": {
     "lp_tourney_name": { "new_value": "{{state.tournament}}" },
-    "lp_round": { "new_value": "{{state.match.name}}" },
+    "lp_tourney_round": { "new_value": "{{state.match.name}}" },
 
     {{#with (lookup userData.setLengths state.game.id) as | rules |}}
     {{#with (lookup rules.exceptions ../state.match.id) as | length |}}
-    "lp_best_of": { "new_value": "{{length}}" },
+    "lp_set_best_of": { "new_value": "{{length}}" },
     {{else}}
-    "lp_best_of": { "new_value": "{{rules.default}}" },
+    "lp_set_best_of": { "new_value": "{{rules.default}}" },
     {{/with}}
     {{else}}
-    "lp_best_of": { "new_value": "4" },
+    "lp_set_best_of": { "new_value": "3" },
     {{/with}}
 
     {{#if state.game.name}}
